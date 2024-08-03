@@ -151,3 +151,82 @@ section img#mountains_front {
   white-space: pre-line;
   /* 确保内容中的换行符得到尊重 */
 }
+
+/* 底部区块的样式 */
+.footer {
+  /* 背景使用从蓝色到浅蓝色的线性渐变 */
+  background: linear-gradient(135deg, rgb(48, 16, 75), rgba(84, 9, 134, 0.5));
+  /* 文本颜色设为白色 */
+  color: white;
+  /* 设置底部区块的内边距 */
+  padding: 50px;
+}
+
+/* 底部数据内容的样式 */
+.footer__data {
+  /* 弹性项目的宽度设为容器的20% */
+  flex-basis: 17%;
+  /* 每个数据内容的外边距 */
+  margin: 10px;
+}
+
+/* 底部标题和副标题的样式 */
+.footer__title,
+.footer__subtitle {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  /* 设置字体加粗 */
+  font-weight: bold;
+  /* white-space: ; */
+}
+
+/* 底部描述的样式 */
+.footer__description {
+  font-size: 1.2em;
+  color: #ffffff;
+  /* 设置顶部和底部的外边距 */
+  margin: 10px 0;
+}
+
+/* 底部链接的样式 */
+.footer__link {
+  margin-bottom: 10px;
+  /* 文本颜色设为白色 */
+  color: white;
+  /* 移除链接的下划线 */
+  text-decoration: none;
+  /* 将链接显示为块级元素 */
+  display: block;
+  margin-left: 0;
+}
+
+/* 底部版权部分的样式 */
+.footer__rights {
+  margin-top: 40px;
+  /* 文本居中对齐 */
+  text-align: center;
+}
+
+/* 底部条款链接的样式 */
+.footer__terms-link {
+  /* 文本颜色设为白色 */
+  color: white;
+  /* 移除链接的下划线 */
+  text-decoration: none;
+  /* 设置左右的外边距 */
+  margin: 0 10px;
+}
+
+.footer__copy {
+  color: #ffffff;
+}
+
+/* 网格布局，用于灵活地排列内容 */
+.grid {
+  /* 使用弹性布局 */
+  display: flex;
+  /* 项目之间平均分配空间 */
+  justify-content: space-between;
+  /* 允许项目在下一行换行 */
+  flex-wrap: wrap;
+}
