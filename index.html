@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Parallax Scrolling Website</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="1.js">
+</head>
+
+<body>
+  <header>
+    <a href="#" class="logo">NA17.0</a>
+    <ul>
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Work</a></li>
+      <li><a href="./Contact.html" onclick="jump('Contact.html')">加入我们</a></li>
+    </ul>
+  </header>
+  <section>
+    <img src="images/stars.png" id="stars">
+    <img src="images/moon.png" id="moon">
+    <img src="images/mountains_behind.png" id="mountains_behind">
+    <h2 id="text">NA17.0</h2>
+    <a href="#sec" id="btn">Explore</a>
+    <img src="images/mountains_front.png" id="mountains_front">
+  </section>
+  <div class="sec" id="sec">
+    <h2>好好学习天天向上</h2>
+    <p class="department-desc right">
+      连接未来，服务每一位！
+
+      作为学院的技术力量，
+
+      【网络管理工作站】承担着为全院师生提供稳定、高效的网络服务的使命。
+
+      我们不仅仅是技术专家，更是学生的朋友，
+
+      无论你遇到任何网络问题，我们都在这里为你服务。
+
+      为了满足学生的多种需求，我们还为你提供了多种网络服务和工具。
+
+      我们的服务范围包括但不限于：
+
+      导航网、NA音乐网、NA电影网、
+
+      报修平台、资源共享中心、
+
+      专业软件下载库，以及NA服务中心。
+
+      与我们一起，探索数字世界，享受无限可能！
+    </p>
+  </div>
+
+  <script>
+    let stars = document.getElementById('stars')
+    let moon = document.getElementById('moon')
+    let mountains_behind = document.getElementById('mountains_behind')
+    let text = document.getElementById('text')
+    let btn = document.getElementById('btn')
+    let mountains_front = document.getElementById('mountains_front')
+    let header = document.querySelector('header')
+
+    window.addEventListener('scroll', function () {
+      let value = window.scrollY;
+      stars.style.left = value * 0.25 + 'px'
+      moon.style.top = value * 1.05 + 'px'
+      mountains_behind.style.top = value * 0.5 + 'px'
+      mountains_front.style.top = value * 0 + 'px'
+      text.style.marginRight = value * 4 + 'px'
+      text.style.marginTop = value * 1.5 + 'px'
+      btn.style.marginTop = value * 1.5 + 'px'
+      header.style.top = value * 0.5 + 'px'
+    })
+  </script>
+</body>
+
+</html>
