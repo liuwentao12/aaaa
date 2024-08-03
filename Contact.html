@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 填写信息表单 -->
+  <a class="apply section">
+    <section id="apply">
+      <h2>
+        APPLY JOIN
+      </h2>
+      <form action="submit.php" class="apply-form" method="post">
+        <div class="form-row">
+          <label for="student-name">姓名:</label>
+          <input id="student-name" name="student_name" required oninput="checkInputs();updateButtonColor()"
+            type="text" />
+        </div>
+        <div class="form-row">
+          <label for="major">专业:</label>
+          <input id="major" name="major" required oninput="checkInputs();updateButtonColor()" type="text" />
+        </div>
+        <div class="form-row">
+          <label for="class">年级:</label>
+          <input list="c" id="class" name="class_" required oninput="checkInputs();updateButtonColor()" type="text" />
+          <datalist id="c">
+            <option value="22级">
+            <option value="23级">
+            <option value="24级">
+
+
+          </datalist>
+        </div>
+        <div class="form-row">
+          <label for="gender">性别:</label>
+          <input list="genders" id="gender" name="gender" required oninput="checkInputs();updateButtonColor()"
+            type="text" />
+        </div>
+        <div class="form-row">
+          <label for="telephone_number">手机号码:</label>
+          <input id="telephone_number" name="telephone_number" required oninput="checkInputs();updateButtonColor()"
+            type="text" />
+        </div>
+        <div class="form-row">
+          <label for="department-1">感兴趣的部门一:</label>
+          <input list="departments" id="department-1" name="department_1" required
+            oninput="checkInputs();updateButtonColor()" type="text" />
+          <datalist id="departments">
+            <option value="技术组">
+            <option value="资源组">
+            <option value="秘书组">
+            <option value="宣传组">
+            <option value="外联组">
+          </datalist>
+        </div>
+        <div class="form-row">
+          <label for="department-2">感兴趣的部门二:</label>
+          <input list="departments" id="department-2" name="department_2" required
+            oninput="checkInputs();updateButtonColor()" type="text" />
+        </div>
+        <div class="form-row">
+          <input id="submit-button" type="submit" value="提交" />
+        </div>
+
+      </form>
+
+  </a>
+</body>
+<script>
+  document.querySelector('.apply-form').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const formData = {
+      'student_name': document.querySelector('input[name="student-name"]').value,
+      'student_id': document.querySelector('input[name="student-id"]').value,
+      'major': document.querySelector('input[name="major"]').value,
+      'class': document.querySelector('input[name="class"]').value,
+      'gender': document.querySelector('input[name="gender"]').value,
+      'department_1': document.querySelector('input[name="department-1"]').value,
+      'department_2': document.querySelector('input[name="department-2"]').value
+    };
+
+    try {
+      const response = await fetch('/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (data.message) {
+        alert('提交成功，期待你的加入！');
+      } else {
+        alert('提交失败，请重试！');
+      }
+    } catch (error) {
+      alert('提交失败，请重试！');
+    }
+  });
+</script>
+
+</html>
