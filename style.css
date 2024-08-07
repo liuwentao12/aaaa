@@ -413,3 +413,817 @@ section img#mountains_front {
     /* 使用rotateZ代替rotate */
   }
 }
+
+/* ---------------------------- */
+.main-container {
+  display: flex;
+  background: linear-gradient(#110d17, #132752);
+  /*背景色*/
+}
+
+/* --------------------------,不同部门导航栏 */
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 100vh;
+}
+
+.bar li {
+  list-style: none;
+}
+
+.bar ul {
+  position: relative;
+  transform: skewY(-15deg);
+}
+
+.bar ul li {
+  position: relative;
+  width: 200px;
+  background: #161a2f;
+  /* 抽屉颜色 */
+  z-index: var(--z);
+  padding: 15px;
+  border-bottom: 1px solid #060e3b;
+  /* 每个抽屉直接间隙的颜色 */
+  transition: 0.5s;
+  /*过渡动画*/
+}
+
+.bar ul li:hover {
+  transform: translate(50px, 10px) scale(1.1);
+  /* scale: 放大1.1倍 */
+  background: #093a75;
+}
+
+.bar ul li a {
+  color: #999;
+  /* 文字颜色 */
+  letter-spacing: 8px;
+  text-decoration: none;
+  /* 消除文字的下滑线 */
+}
+
+.bar ul li:hover a {
+  color: #fff;
+}
+
+.bar ul li::before {
+  content: '';
+  width: 40px;
+  height: 100%;
+  background: #161a2f;
+  display: block;
+  position: absolute;
+  left: -40px;
+  top: 0;
+  transform: skewY(45deg);
+  transform-origin: right;
+  transition: 0.5s;
+}
+
+.bar ul li:hover::before {
+  background: #072e5e;
+  /* 在hover颜色上再下移一点点，加深，目的是做阴影 */
+}
+
+.bar ul li::after {
+  content: '';
+  width: 100%;
+  height: 40px;
+  background: #161a2f;
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: -40px;
+  transform: skewX(45deg);
+  transform-origin: bottom;
+  transition: 0.5s;
+}
+
+.bar ul li:hover::after {
+  background: #0a4286;
+  /* 在hover颜色上再上移一点点 */
+}
+
+.bar ul li:lasst-child::after {
+  box-shadow: -120px 120px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ----------------------------------,以下为全屏扩展卡片 */
+.mr2 {
+  margin-right: 1rem;
+}
+
+.ml2 {
+  margin-left: 1rem;
+}
+
+.article-title {
+  font-size: 2.5rem;
+  color: #999;
+  /* 标题字体颜色，下文expanded则为点击全屏的css选择器 */
+  line-height: 1;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+  letter-spacing: 0.025em;
+  transition: font-size 0.45s ease-in-out, color 0.3s ease-out;
+}
+
+.header-image {
+  height: 220px;
+  background-image: url(../images/11.jpg);
+  /* 这是示例图片，建议部门合照啥的 */
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 3rem;
+  position: relative;
+  transition: all 0.45s ease-in-out;
+}
+
+.overlay {
+  transition: all 0.3s ease-in-out;
+  background: ;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.title-wrap {
+  transform: translateY(0);
+  transition: transform 0.45s ease-in;
+}
+
+.drop-cap {
+  font-size: 55px;
+  line-height: 28px;
+}
+
+.wrapper {
+  margin-left: 500px;
+  left: 0;
+  height: 630px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book__cover-exerpt {
+  color: #6a6a6a;
+  /* 正文字体颜色 */
+  padding: 1rem 1.5rem;
+  line-height: 1.6;
+  text-align: center;
+  opacity: 1;
+  max-width: 370px;
+  margin: 0 auto;
+  display: block;
+  transition: all 0.25s ease-in-out;
+}
+
+.book__cover {
+  height: 100%;
+  width: 100%;
+  background-color: #161a2f;
+  /* 背景颜色 */
+}
+
+.book__content {
+  text-align: justify;
+  word-wrap: break-word;
+  font-size: 1.1rem;
+  opacity: 0;
+  transition: all 1.5s ease-in-out;
+  max-width: 750px;
+  margin: 0 auto 6rem;
+  padding: 0 2rem;
+}
+
+.book__content p {
+  line-height: 1.8;
+  color: #3a3a3a;
+  margin-bottom: 2.5rem;
+}
+
+.book {
+  overflow: hidden;
+  margin-top: -100px;
+  margin-left: 200px;
+  background: white;
+  height: 580px;
+  width: 400px;
+  box-shadow: 0 20px 30px -10px #2d1d98;
+  /* 阴影颜色 */
+  transition: all 0.5s ease-in-out;
+}
+
+.book:hover {
+  box-shadow: 0 6px 50px 10px #122d67;
+  /* 阴影颜色（hover状态下） */
+}
+
+.book--expanded {
+  margin-left: -200px;
+  margin-top: 200px;
+  height: 800px;
+  width: 800px;
+  overflow-y: scroll;
+  background-color: #161a2f;
+  /* 全屏状态下的背景颜色*/
+}
+
+.book--expanded .overlay {
+  opacity: 0.95;
+}
+
+.book--expanded .article-title {
+  color: 999;
+  /* 全屏下的标题颜色，自己设置吧 */
+  font-size: 64px;
+  letter-spacing: 0.05em;
+}
+
+.book--expanded .title-wrap {
+  transform: translateY(-300px);
+  color: white;
+}
+
+.book--expanded .book__cover-exerpt {
+  opacity: 0;
+}
+
+.book--expanded .book__cover {
+  height: 460px;
+  /* 全屏状态下图片占比 */
+  margin-bottom: 4rem;
+  /* 全屏状态下正文首行高度 */
+}
+
+.book--expanded .book__content {
+  opacity: 1;
+}
+
+.book--expanded .header-image {
+  height: 100%;
+  /* 全屏状态下图片与正文之间的缝隙 */
+}
+
+span {
+  margin-left: -35px;
+  /* color:     (全屏状态下第一个大字的颜色) */
+}
+
+span .fa {
+  font-size: 17px;
+  margin-left: 20px;
+}
+
+
+.book__expanded .book__cover-expert {
+  opacity: 0;
+  max-height: 10em;
+  padding: 0rem;
+}
+
+/* -----------------------图片轮换CSS */
+/* 卡组1 */
+.box {
+  position: relative;
+  width: 600px;
+  height: 400px;
+}
+
+.box .face1 {
+  position: absolute;
+  top: 300px;
+  left: -350px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* 不能删，删了图片就没了，亲测！！！*/
+}
+
+.box .face1 span {
+  width: 150px;
+  height: 100%;
+  transition: 1s;
+  background: #000;
+}
+
+.box .face1.face1 span {
+  background: url(images/12.11.jpg);
+  /* Image width and height is 600px * 400px */
+  /* https://www.lddgo.net/image/compress */
+  transform-origin: top;
+}
+
+.box:hover .face1.face1 span {
+  transform: rotateX(90deg) translateY(-50%);
+}
+
+.box .face1.face2 span {
+  background: url(images/12.18.jpg);
+  /* Image width and height is 600px * 400px */
+  /* https://www.lddgo.net/image/compress */
+  transform-origin: bottom;
+  transform: rotateX(90deg) translateY(50%);
+}
+
+.box:hover .face1.face2 span {
+  transform: rotateX(0deg) translateY(0);
+}
+
+.box .face1 span:nth-child(1) {
+  background-position-x: 0;
+  transition-delay: 0s;
+}
+
+.box .face1 span:nth-child(2) {
+  background-position-x: -150px;
+  transition-delay: 0.2s;
+}
+
+.box .face1 span:nth-child(3) {
+  background-position-x: -300px;
+  transition-delay: 0.4s;
+}
+
+.box .face1 span:nth-child(4) {
+  background-position-x: -450px;
+  transition-delay: 0.6s;
+}
+
+/* 卡组2 */
+
+.box {
+  position: relative;
+  width: 600px;
+  height: 400px;
+}
+
+.box .face2 {
+  position: absolute;
+  top: 300px;
+  left: -350px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* 不能删，删了图片就没了，亲测！！！*/
+}
+
+.box .face2 span {
+  width: 150px;
+  height: 100%;
+  transition: 1s;
+  background: #000;
+}
+
+.box .face2.face1 span {
+  background: url(images/12.11.jpg);
+  /* Image width and height is 600px * 400px */
+  /* https://www.lddgo.net/image/compress */
+  transform-origin: top;
+}
+
+.box:hover .face2.face1 span {
+  transform: rotateX(90deg) translateY(-50%);
+}
+
+.box .face2.face2 span {
+  background: url(images/12.18.jpg);
+  /* Image width and height is 600px * 400px */
+  /* https://www.lddgo.net/image/compress */
+  transform-origin: bottom;
+  transform: rotateX(90deg) translateY(50%);
+}
+
+.box:hover .face2.face2 span {
+  transform: rotateX(0deg) translateY(0);
+}
+
+.box .face2 span:nth-child(1) {
+  background-position-x: 0;
+  transition-delay: 0s;
+}
+
+.box .face2 span:nth-child(2) {
+  background-position-x: -150px;
+  transition-delay: 0.2s;
+}
+
+.box .face2 span:nth-child(3) {
+  background-position-x: -300px;
+  transition-delay: 0.4s;
+}
+
+.box .face2 span:nth-child(4) {
+  background-position-x: -450px;
+  transition-delay: 0.6s;
+}
+
+/* 卡组3 */
+.box {
+  position: relative;
+  width: 600px;
+  height: 400px;
+}
+
+.box .face3 {
+  position: absolute;
+  top: 300px;
+  left: -350px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* 不能删，删了图片就没了，亲测！！！*/
+}
+
+.box .face3 span {
+  width: 150px;
+  height: 100%;
+  transition: 1s;
+  background: #000;
+}
+
+.box .face3.face1 span {
+  background: url(images/12.11.jpg);
+  /* Image width and height is 600px * 400px */
+  /* https://www.lddgo.net/image/compress */
+  transform-origin: top;
+}
+
+.box:hover .face3.face1 span {
+  transform: rotateX(90deg) translateY(-50%);
+}
+
+.box .face3.face2 span {
+  background: url(images/12.18.jpg);
+  /* Image width and height is 600px * 400px */
+  /* https://www.lddgo.net/image/compress */
+  transform-origin: bottom;
+  transform: rotateX(90deg) translateY(50%);
+}
+
+.box:hover .face3.face2 span {
+  transform: rotateX(0deg) translateY(0);
+}
+
+.box .face3 span:nth-child(1) {
+  background-position-x: 0;
+  transition-delay: 0s;
+}
+
+.box .face3 span:nth-child(2) {
+  background-position-x: -150px;
+  transition-delay: 0.2s;
+}
+
+.box .face3 span:nth-child(3) {
+  background-position-x: -300px;
+  transition-delay: 0.4s;
+}
+
+.box .face3 span:nth-child(4) {
+  background-position-x: -450px;
+  transition-delay: 0.6s;
+}
+
+/* 卡组4 */
+.box {
+  position: relative;
+  width: 600px;
+  height: 400px;
+}
+
+.box .face4 {
+  position: absolute;
+  top: 300px;
+  left: -350px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* 不能删，删了图片就没了，亲测！！！*/
+}
+
+.box .face4 span {
+  width: 150px;
+  height: 100%;
+  transition: 1s;
+  background: #000;
+}
+
+.box .face4.face1 span {
+  background: url(images/12.11.jpg);
+  /* Image width and height is 600px * 400px */
+  /* https://www.lddgo.net/image/compress */
+  transform-origin: top;
+}
+
+.box:hover .face4.face1 span {
+  transform: rotateX(90deg) translateY(-50%);
+}
+
+.box .face4.face2 span {
+  background: url(images/12.18.jpg);
+  /* Image width and height is 600px * 400px */
+  /* https://www.lddgo.net/image/compress */
+  transform-origin: bottom;
+  transform: rotateX(90deg) translateY(50%);
+}
+
+.box:hover .face4.face2 span {
+  transform: rotateX(0deg) translateY(0);
+}
+
+.box .face4 span:nth-child(1) {
+  background-position-x: 0;
+  transition-delay: 0s;
+}
+
+.box .face4 span:nth-child(2) {
+  background-position-x: -150px;
+  transition-delay: 0.2s;
+}
+
+.box .face4 span:nth-child(3) {
+  background-position-x: -300px;
+  transition-delay: 0.4s;
+}
+
+.box .face4 span:nth-child(4) {
+  background-position-x: -450px;
+  transition-delay: 0.6s;
+}
+
+/* 卡组5 */
+.box {
+  position: relative;
+  width: 600px;
+  height: 400px;
+}
+
+.box .face5 {
+  position: absolute;
+  top: 300px;
+  left: -350px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* 不能删，删了图片就没了，亲测！！！*/
+}
+
+.box .face5 span {
+  width: 150px;
+  height: 100%;
+  transition: 1s;
+  background: #000;
+}
+
+.box .face5.face1 span {
+  background: url(images/12.11.jpg);
+  /* Image width and height is 600px * 400px */
+  /* https://www.lddgo.net/image/compress */
+  transform-origin: top;
+}
+
+.box:hover .face5.face1 span {
+  transform: rotateX(90deg) translateY(-50%);
+}
+
+.box .face5.face2 span {
+  background: url(images/12.18.jpg);
+  /* Image width and height is 600px * 400px */
+  /* https://www.lddgo.net/image/compress */
+  transform-origin: bottom;
+  transform: rotateX(90deg) translateY(50%);
+}
+
+.box:hover .face5.face2 span {
+  transform: rotateX(0deg) translateY(0);
+}
+
+.box .face5 span:nth-child(1) {
+  background-position-x: 0;
+  transition-delay: 0s;
+}
+
+.box .face5 span:nth-child(2) {
+  background-position-x: -150px;
+  transition-delay: 0.2s;
+}
+
+.box .face5 span:nth-child(3) {
+  background-position-x: -300px;
+  transition-delay: 0.4s;
+}
+
+.box .face5 span:nth-child(4) {
+  background-position-x: -450px;
+  transition-delay: 0.6s;
+}
+
+/* 表格 */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  font-family: inherit;
+  gap: 10px;
+  padding-inline: 2em;
+  padding-bottom: 0.4em;
+  background-color: #171717;
+  //background-color: #0a192f;
+  border-radius: 20px;
+}
+
+.form-heading {
+  text-align: center;
+  margin: 2em;
+  color: #64ffda;
+  font-size: 1.2em;
+  background-color: transparent;
+  align-self: center;
+}
+
+.form-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 10px;
+  padding: 0.6em;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: #171717;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+.input-field {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #ccd6f6;
+  padding-inline: 1em;
+}
+
+.sendMessage-btn {
+  cursor: pointer;
+  margin-bottom: 3em;
+  padding: 1em;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #64ffda;
+  font-weight: bold;
+  outline: 1px solid #64ffda;
+  transition: all ease-in-out 0.3s;
+}
+
+.sendMessage-btn:hover {
+  transition: all ease-in-out 0.3s;
+  background-color: #64ffda;
+  color: #000;
+  cursor: pointer;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+.form-card1 {
+  background-image: linear-gradient(163deg, #64ffda 0%, #64ffda 100%);
+  border-radius: 22px;
+  transition: all 0.3s;
+}
+
+.form-card1:hover {
+  box-shadow: 0px 0px 30px 1px rgba(100, 255, 218, 0.3);
+}
+
+.form-card2 {
+  border-radius: 0;
+  transition: all 0.2s;
+}
+
+.form-card2:hover {
+  transform: scale(0.98);
+  border-radius: 20px;
+}
+
+
+@keyframes dance6123 {
+  to {
+    background-position: var(--width);
+  }
+}
+
+.apply-form .form-row {
+  /* 使用flex布局，使子元素可以灵活布局 */
+  display: flex;
+  /* 设置flex布局的方向为垂直列 */
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+/* 提交的表格 */
+.login-box {
+  /* 设置弹性盒子的属性,使其为块级元素 */
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(24, 20, 20, 0.987);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+  border-radius: 10px;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.login-box .user-box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.login-box .user-box input:focus~label,
+.login-box .user-box input:valid~label {
+  top: -20px;
+  left: 0;
+  color: #bdb8b8;
+  font-size: 12px;
+}
+
+.login-box form button {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px
+}
+
+.login-box button:hover {
+  background: #03f40f;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03f40f,
+    0 0 25px #03f40f,
+    0 0 50px #03f40f,
+    0 0 100px #03f40f;
+}
+
+.login-box button span {
+  position: absolute;
+  display: block;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+
+  50%,
+  100% {
+    left: 100%;
+  }
+}
+
+.login-box a span:nth-child(1) {
+  bottom: 2px;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03f40f);
+  animation: btn-anim1 2s linear infinite;
+}
