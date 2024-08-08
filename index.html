@@ -113,17 +113,42 @@
               <h1 class="article-title">NA 红楼梦</h1>
             </div>
             <p class="book__cover-exerpt"> <!--卡片短文简介 -->
+              数字时代的守护者，网络的维护专家！
 
+              你是否对网络技术充满热情？
+
+              【技术组】专门负责宿舍网络设备的维护和管理。
+
+              我们保证每位同学都能享受到稳定、快速的网络服务。
+
+              如果你有技术背景或对网络维护有浓厚的兴趣，
+
+              这里是你的舞台！
+
+              与我们一起，确保整个校园的数字连接无间断！
               1111
               <br><br>
             </p>
 
           </div>
           <div class="book__content"> <!-- 全屏下的长文介绍,drop-cap是首字放大 -->
-            <p><span class="drop-cap">12111</span>
+            1232144
+            <p><span class="drop-cap"></span>
             </p>
             <p>
-              2222
+              数字时代的守护者，网络的维护专家！
+
+              你是否对网络技术充满热情？
+
+              【技术组】专门负责宿舍网络设备的维护和管理。
+
+              我们保证每位同学都能享受到稳定、快速的网络服务。
+
+              如果你有技术背景或对网络维护有浓厚的兴趣，
+
+              这里是你的舞台！
+
+              与我们一起，确保整个校园的数字连接无间断！
             </p>
             <p>此3333</p>
             <p>44444</p>
@@ -165,10 +190,18 @@
 
           </div>
           <div class="book__content"> <!-- 全屏下的长文介绍,drop-cap是首字放大 -->
-            <p><span class="drop-cap">阿</span>阿是防守打法撒酒疯史可法沙发撒立法司法就撒拉卡拉撒电极法
+            <p><span class="drop-cap">1</span>
             </p>
             <p>
-              8888
+              品牌的守护者，创意的火花！
+
+              你是否充满创意、拥有独特的视角？
+
+              【宣传组】致力于协会的品牌建设和宣传。
+
+              从社交媒体管理到新闻发布，我们需要你的创新思维和沟通技巧。
+
+              加入我们，一同创造影响力，展现协会的魅力！
             </p>
             <p>88。</p>
             <p>888</p>
@@ -395,6 +428,9 @@
   </footer>
   <!-- 光标跟随 -->
   <!-- <div class="img"></div> -->
+  <!--下面这一行script是全屏展开卡片的关键，勿删 -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
   <script>
     let stars = document.getElementById('stars')
     let moon = document.getElementById('moon')
@@ -415,6 +451,40 @@
       btn.style.marginTop = value * 1.5 + 'px'
       header.style.top = value * 0.5 + 'px'
     })
+
+    // ----------------点击展开全屏卡片函数
+    "use strict";
+
+    $('.book').on('click', function () {
+      $(this).toggleClass('book--expanded');
+      $(this).scrollTop(0); /* 这一行：点开全屏的时候再次点击会缩回卡片，此时如果滚动条不在顶部的话缩回去就是白的。应该点击退出的时候让卡片的文档高度置为0 */
+    });
+
+    // ----------------导航栏选择不同部门介绍的卡片函数
+    document.addEventListener('DOMContentLoaded', function () {
+      const navLinks = document.querySelectorAll('.bar a');
+      const cards = document.querySelectorAll('.wrapper .cards');
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', function (event) {
+          event.preventDefault(); // 阻止链接默认行为
+          const targetCardId = this.getAttribute('data-target');
+          showCard(targetCardId);
+        });
+      });
+
+      function showCard(cardId) {
+        // 隐藏所有卡片
+        cards.forEach(card => {
+          card.style.display = 'none';
+        });
+
+        // 显示目标卡片
+        const targetCard = document.getElementById(cardId);
+        targetCard.style.display = 'block';
+      }
+    });
+
 
     // // 光标跟随
     // let img = document.querySelector('.img')
